@@ -3,28 +3,28 @@ provider "aws"{
 }
 resouce "aws_security_group""my_sg" {
     name= "my_sg"
-    description= "ssh"
+    description= "TCP"
     ingress {
         from_port  = 22 
         to_port = 22
-        protocol = "SSH"
+        protocol = "TCP"
         cidr_blocks =["0.0.0.0/0"]
     }
     egress {
-        from_port = 22
-        to_port = 22
-        protocol = "SSH"
+        from_port = 0
+        to_port = 0
+        protocol = "TCP"
         cidr_blocks = ["0.0.0.0/0"]
     }
 }
 resource "aws_instance" "my-instance" {
   ami=var.image_id
-  instance_type= "t2-micro"
-  key_name= "hello.pem"
-  security_groups=["defaults"]
+  instance_type= "t2.micro"
+  key_name= "hello"
+  vpc_security_groups_id=["aws_security_group.my_sg.id"]
 }
 variable "image_id" {
-    type="string"
+    type= string
     default="ami-01816d07b1128cd2d"
     description="Enter_my_value"
 }
