@@ -28,6 +28,6 @@ variable "image_id" {
     default=""
     description="Enter_my_value"
 }
-output "my_ip"{
+output "kuldeep"{
     value= aws_instance.my-instance.public_ip
 }
