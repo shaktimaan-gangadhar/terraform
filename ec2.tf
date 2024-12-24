@@ -28,3 +28,6 @@ variable "image_id" {
     default="ami-01816d07b1128cd2d"
     description="Enter_my_value"
 }
+output "my_ip"{
+    value= "hello world"
+}
