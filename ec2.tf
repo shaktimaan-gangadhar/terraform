@@ -21,7 +21,7 @@ resource "aws_instance" "my-instance" {
   ami=var.image_id
   instance_type= "t2.micro"
   key_name= "hello"
-  vpc_security_groups_id=["aws_security_group.my_sg.id"]
+  vpc_security_groups_id=[aws_security_group.my_sg.id]
 }
 variable "image_id" {
     type= string
@@ -29,5 +29,5 @@ variable "image_id" {
     description="Enter_my_value"
 }
 output "my_ip"{
-    value= "hello world"
+    value= aws_instance.my-instance.public_ip
 }
