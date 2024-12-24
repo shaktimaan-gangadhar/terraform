@@ -23,13 +23,13 @@ resource "aws_instance" "my-instance" {
   key_name= ""
   vpc_security_group_ids=[aws_security_group.my_sg.id]
   user_data= <<EOF 
-    #!/bin/bash
-    yum update 
-    yum install httpd -y
-    systemctl start httpd
-    systemctl enable httpd
-    echo "hello kuldeep" > /var/www/html/index.html
-  EOF
+      #!/bin/bash
+      yum update 
+      yum install httpd -y
+      systemctl start httpd
+      systemctl enable httpd
+      echo "hello kuldeep" > /var/www/html/index.html
+      EOF
 }
 variable "image_id" {
     type= string
