@@ -1,6 +1,15 @@
 provider "aws"{
     region="us-west-2"
 }
+data "aws_ami" "latest_ami" {
+  most_recent = "true"
+  owners = ["amazon"]
+
+  filter {
+    name= "name"
+    values= ["amzn2-ami-hvm-*-x86_64-gp2"]
+    }
+}
 resouce "aws_security_group""my_sg" {
     name= "my_sg"
     description= "TCP"
